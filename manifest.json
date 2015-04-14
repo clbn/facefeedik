@@ -1,0 +1,19 @@
+{
+  "name": "Facefeedik",
+  "version": "0.0.1",
+  "description": "This extension does some magic for the members of the very special Facebook group",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": [
+        "http://www.facebook.com/*",
+        "https://www.facebook.com/*"
+      ],
+      "js": [
+        "jquery-2.1.3.min.js",
+        "fix-names.js"
+      ]
+    }
+  ],
+  "permissions": []
+}
