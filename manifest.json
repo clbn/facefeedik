@@ -10,6 +10,7 @@
         "https://www.facebook.com/*"
       ],
       "js": [
+        "init.js",
         "jquery-2.1.3.min.js",
         "fix-names.js"
       ]
