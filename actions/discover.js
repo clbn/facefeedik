@@ -15,10 +15,17 @@ registerAction(function(node) {
     var commentElement = $(this);
 
     var href = commentElement.find('.UFICommentActorName').attr('href');
-    var fbName = getFbName(href);
+    if (!href) {
+      return;
+    }
 
     var text = commentElement.find('.UFICommentBody').text();
     text = text.trim();
+    if (!text) {
+      return;
+    }
+
+    var fbName = getFbName(href);
 
     frfNames[fbName] = text;
   });
