@@ -18,8 +18,9 @@ registerAction(function(node) {
   userLinks.map(function() {
     var linkElement = $(this);
     var href = linkElement.attr('href');
+    var linkText = linkElement.text();
     var username = href.match(/https:\/\/www\.facebook\.com\/([\w\.]+)(\/|\?|$)/)[1];
-    if (frfNames[username]) {
+    if (frfNames[username] && linkText.length > 0) {
       if (linkElement.find('.facefeedik-name').length === 0) {
         linkElement.append(' <span class="facefeedik-name">(' + frfNames[username] + ')</span>');
       } else {
