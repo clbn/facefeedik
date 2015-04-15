@@ -1,7 +1,7 @@
 {
   "name": "Facefeedik",
-  "version": "0.0.1",
-  "description": "This extension does some magic for the members of the very special Facebook group",
+  "version": "0.1.0",
+  "description": "A Chrome extension that does some magic for the members of the very special Facebook group",
   "manifest_version": 2,
   "content_scripts": [
     {
