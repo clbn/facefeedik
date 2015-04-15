@@ -1,5 +1,5 @@
 registerAction(function(node) {
-  if (document.URL !== 'https://www.facebook.com/groups/friendfeedik/permalink/526755010673615/') {
+  if (document.URL.substring(0, discoveryURL.length) !== discoveryURL) {
     return;
   }
 

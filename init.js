@@ -39,7 +39,8 @@ var observer = new MutationObserver(function(mutations) {
 
 var frfNames = {},
     canStoreNames = true,
-    actions = [];
+    actions = [],
+    discoveryURL = 'https://www.facebook.com/groups/friendfeedik/permalink/526755010673615';
 
 chrome.storage.local.get('names', function(items) {
   frfNames = items['names'] || {};
