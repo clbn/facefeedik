@@ -9,7 +9,9 @@ registerAction(function(node) {
 
   node = node || document.body;
 
-  var userLinks = $(node).find('h5, h6, .UFICommentContent').find('a[href^="https://www.facebook.com/"]');
+  var userLinks = $(node)
+    .find('h5, h6, .UFICommentContent, .UFILikeSentenceText, .uiContextualLayer')
+    .find('a[href^="https://www.facebook.com/"]');
 
   if (userLinks.length === 0) {
     return;
