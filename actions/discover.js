@@ -15,7 +15,7 @@ registerAction(function(node) {
     var commentElement = $(this);
 
     var href = commentElement.find('.UFICommentActorName').attr('href');
-    var fbName = href.match(/https:\/\/www\.facebook\.com\/([\w\.]+)(\/|\?|$)/)[1];
+    var fbName = getFbName(href);
 
     var text = commentElement.find('.UFICommentBody').text();
     text = text.trim();

@@ -6,6 +6,14 @@ var toArray = function(nl) {
   return Array.prototype.slice.call(nl);
 };
 
+var getFbName = function(href) {
+  var fbName = href.match(/https:\/\/www\.facebook\.com\/([\w\.]+)(\/|\?|\&|$)/)[1];
+  if (fbName === 'profile.php') {
+    fbName = href.match(/\/profile.php\?id\=([\d]+)(\?|\&|$)/)[1];
+  }
+  return fbName;
+};
+
 var documentLoaded = new Promise(function(resolve) {
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
     setTimeout(resolve, 0);
