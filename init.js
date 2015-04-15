@@ -6,7 +6,7 @@ var toArray = function(nl) {
   return Array.prototype.slice.call(nl);
 };
 
-var documentLoaded = new Promise(function (resolve) {
+var documentLoaded = new Promise(function(resolve) {
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
     setTimeout(resolve, 0);
   } else {
@@ -14,13 +14,13 @@ var documentLoaded = new Promise(function (resolve) {
   }
 });
 
-var observer = new MutationObserver(function (mutations) {
+var observer = new MutationObserver(function(mutations) {
   mutations.forEach(function(mutation) {
-    if (mutation.addedNodes.length == 0) {
+    if (mutation.addedNodes.length === 0) {
       return;
     }
     toArray(mutation.addedNodes).forEach(function(node) {
-      if (node.nodeType == Node.ELEMENT_NODE) {
+      if (node.nodeType === Node.ELEMENT_NODE) {
         actions.forEach(function(action) {
           action(node);
         });
@@ -29,9 +29,17 @@ var observer = new MutationObserver(function (mutations) {
   });
 });
 
-var actions = [];
+var frfNames = {},
+    canStoreNames = true,
+    actions = [];
 
-documentLoaded.then(function() {
-  actions.forEach(function(action) { action(); });
-  observer.observe(document.body, {childList: true, subtree: true});
+chrome.storage.local.get('names', function(items) {
+  frfNames = items['names'] || {};
+
+  documentLoaded.then(function() {
+    actions.forEach(function(action) {
+      action();
+    });
+    observer.observe(document.body, {childList: true, subtree: true});
+  });
 });
